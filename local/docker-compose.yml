@@ -6,7 +6,7 @@ services:
       DATA_SINK: ${DATA_SINK}
       DATA_SINK_SIZE: ${DATA_SINK_SIZE}
     volumes:
-      - ./data/data.csv:/app/data/data.csv
+      - ./data:/app/data/data.csv
     networks:
       - lahatrad_network
 
