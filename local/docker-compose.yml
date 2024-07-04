@@ -1,0 +1,14 @@
+services:
+  data_csv_generator:
+    build: ../
+    container_name: data_csv_generator
+    environment:
+      DATA_SINK: ${DATA_SINK}
+      DATA_SINK_SIZE: ${DATA_SINK_SIZE}
+    volumes:
+      - ./data/data.csv:/app/data/data.csv
+    networks:
+      - lahatrad_network
+
+networks:
+  lahatrad_network:
