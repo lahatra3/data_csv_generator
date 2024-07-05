@@ -28,13 +28,17 @@ const data_writer = (filename) => {
         process.exit(1);
     });
 
-    const data1 = randomUUID().split("-").join(",");
-    const data2 = randomUUID().split("-").reverse().join(",");
-    const data3 = randomUUID().split("-").join(",");
-    const data4 = randomInt(1331);
-    const data5 = Date.now();
+    const data = Array.from({length: 17_331}, (_, index) => {
+        const data1 = randomUUID().split("-").join(",");
+        const data2 = randomUUID().split("-").reverse().join(",");
+        const data3 = randomUUID().split("-").join(",");
+        const data4 = randomInt(1331);
+        const data5 = Date.now();
+    
+        return `${new Date(data5).toISOString()},${data3},${data2},${data1},${data4}`;
+    }).join("\n");
 
-    writer.write(`${new Date(data5).toISOString()},${data3},${data2},${data1},${data4}\n`);
+    writer.write(data);
 }
 
 const fileWatcher = (filename, maxSize) => {
